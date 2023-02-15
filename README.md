@@ -35,7 +35,7 @@ Basically, the test sequences are cropped. After that, both the width and height
     ```
 2. Convert YUV files to images.
     ```
-    ffmpg -s 1920x1024 -pix_fmt yuv420p -i ./videos_crop/xxxx.yuv ./images_crop/xxxx/im%d.png
+    ffmpg -s 1920x1024 -pix_fmt yuv420p -i ./videos_crop/xxxx.yuv ./images_crop/xxxx/im%3d.png
     ```
 
 ## Evaluation
@@ -43,17 +43,19 @@ We respectively train four differnt models for PSNR metric, where $\lambda$ equa
 
     python eval.py --eval_lambda 256 --metric mse --intra_model cheng2020_anchor --test_class ClassD --gop_size 10 --pretrain ./checkpoints/dmvc_psnr_256.model
 
-    python eval.py --eval_lambda 256 --metric ms-ssim --intra_model cheng2020_anchor --test_class ClassD --gop_size 10 --pretrain ./checkpoints/dmvc_msssim_8.model
+    python eval.py --eval_lambda 8 --metric ms-ssim --intra_model cheng2020_anchor --test_class ClassD --gop_size 10 --pretrain ./checkpoints/dmvc_msssim_8.model
 
 
 
 ## Citation
 If you find this paper useful, please cite:
 ```
-@inproceedings{lin2022decomposed,
-  title={DMVC: Decomposed Motion Modeling for Learned Video Compression}
-  author={Lin Kai, Jia Chuanmin, Zhang Xinfeng, Wang Shanshe, Ma Siwei and Gao Wen}
-  year={2022}
+@article{lin2022dmvc,
+  title={DMVC: Decomposed Motion Modeling for Learned Video Compression},
+  author={Lin, Kai and Jia, Chuanmin and Zhang, Xinfeng and Wang, Shanshe and Ma, Siwei and Gao, Wen},
+  journal={IEEE Transactions on Circuits and Systems for Video Technology},
+  year={2022},
+  publisher={IEEE}
 }
 ```
 
